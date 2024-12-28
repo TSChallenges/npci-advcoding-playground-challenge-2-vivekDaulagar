@@ -1,7 +1,9 @@
+
 import java.util.Queue;
 import java.util.LinkedList;   // LinkedList also implements Queue
 import java.util.Set;
 import java.util.HashSet;
+import java.util.*;
 
 class Clinic {
 
@@ -22,6 +24,9 @@ class Clinic {
         // Add the patient to the queue and print "Patient <name> admitted."
 
         // TODO
+        patientQueue.add(patient);
+        System.out.println("Patient " +patient.getName()+" admitted.");
+        
     }
     
 
@@ -30,9 +35,28 @@ class Clinic {
         // Assign appointment day to patients(eg. Day 1, Day 2, and so on) as per their order in queue. 
         // Give appointment to maximum 3 patients per day.
         // Once appointment is given to a patient, add that patient to `admittedPatients` set. Also, print "Scheduled <name> on <appointmentDay>"
+           
+       // TODO
 
-        // TODO
-    }
+            int c = 0;
+            while (!patientQueue.isEmpty()) {
+                if (c == 0) {
+                    System.out.println("Scheduling appointment for Day " + dayCount + "...");
+                }
+                Patient patient = patientQueue.poll();
+                if (patient != null) {
+                	if (c == 3) {
+                        dayCount++;
+                        c = 0;
+                    }
+                    patient.setAppointmentDay("Day " + dayCount);
+                    admittedPatients.add(patient);
+                    System.out.println("Scheduled " + patient.getName() + " on " + patient.getAppointmentDay());
+                    c++;
+ 
+                }
+            }
+    	}
 
 
     // Provide treatment or prescription for a patient after their appointment
@@ -41,6 +65,13 @@ class Clinic {
         // Else print "Patient not found in the admitted list."
         
         // TODO
+    	if(admittedPatients.contains(patient)) {
+    		patient.setTreatment(treatment);
+    		System.out.println("Treatment provided to "+patient.getName());
+    	}
+    	else {
+    		System.out.println("Patient not found in the admitted list.");
+    	}
     }
 
 
@@ -50,6 +81,10 @@ class Clinic {
         // Else print "Patient not found in the admitted list."
         
         // TODO
+    	
+    	if(admittedPatients.contains(patient)) {
+    		patient.toString();
+    	}
     }
 
 
@@ -59,6 +94,12 @@ class Clinic {
         // Else print "Patient not found in the admitted list."
         
         // TODO
+    	if(admittedPatients.contains(patient)) {
+    		System.out.println("Appointment Details: "+ patient.getName()+ " is scheduled on "+patient.getAppointmentDay());
+    	}
+    	else {
+    		System.out.println("Patient not found in the admitted list.");
+    	}
     }
 
 
@@ -67,5 +108,8 @@ class Clinic {
         // Remove the patient from admitted patients list. Print "Patient <name> discharged."
 
         // TODO
+    	admittedPatients.remove(patient);
+    	System.out.println("Patient "+patient.getName()+" discharged.");
     }
 }
+
