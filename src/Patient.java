@@ -15,6 +15,8 @@ class Patient {
         this.treatment = null;
         this.appointmentDay = null;
     }
+    
+    
 
     // Getter methods for name, age, gender, symptoms, treatment, appointmentDay
     // TODO
@@ -26,24 +28,96 @@ class Patient {
     /* The below equals() and hashCode() methods are crucial for the proper functioning of 
        collections like HashSet, HashMap, and other hash-based collections. */
 
-    // Override equals() to compare Patient objects based on name, age, and gender
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Patient patient = (Patient) obj;
-        return age == patient.age && name.equals(patient.name) && gender.equals(patient.gender);
-    }
+    public String getName() {
+		return name;
+	}
 
-    // Override hashCode() to generate hash code based on name, age, and gender
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+
+	public String getGender() {
+		return gender;
+	}
+
+
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+
+
+	public String getSymptoms() {
+		return symptoms;
+	}
+
+
+
+	public void setSymptoms(String symptoms) {
+		this.symptoms = symptoms;
+	}
+
+
+
+	public String getTreatment() {
+		return treatment;
+	}
+
+
+
+	public void setTreatment(String treatment) {
+		this.treatment = treatment;
+	}
+
+
+
+	public String getAppointmentDay() {
+		return appointmentDay;
+	}
+
+
+
+	public void setAppointmentDay(String appointmentDay) {
+		this.appointmentDay = appointmentDay;
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Patient other = (Patient) obj;
+		return age == other.age && Objects.equals(appointmentDay, other.appointmentDay)
+				&& Objects.equals(gender, other.gender) && Objects.equals(name, other.name)
+				&& Objects.equals(symptoms, other.symptoms) && Objects.equals(treatment, other.treatment);
+	}
+
     @Override
-    public int hashCode() {
-        return name.hashCode() + age + gender.hashCode();
-    }
+	public int hashCode() {
+		return Objects.hash(age, appointmentDay, gender, name, symptoms, treatment);
+	}
 
     @Override
     public String toString() {
