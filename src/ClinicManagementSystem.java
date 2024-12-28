@@ -3,6 +3,7 @@ public class ClinicManagementSystem {
     public static void main(String[] args) {
         // Create a Clinic instance
         Clinic clinic = new Clinic();
+        
 
         // Create patients
         Patient p1 = new Patient("Alice", 30, "Female", "Fever");
