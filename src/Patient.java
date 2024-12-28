@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 class Patient {
     private String name;
     private int age;
@@ -15,8 +17,7 @@ class Patient {
         this.treatment = null;
         this.appointmentDay = null;
     }
-    
-    
+   
 
     // Getter methods for name, age, gender, symptoms, treatment, appointmentDay
     // TODO
@@ -94,8 +95,8 @@ class Patient {
 
 
 
-	public void setAppointmentDay(String appointmentDay) {
-		this.appointmentDay = appointmentDay;
+	public void setAppointmentDay(String string) {
+		this.appointmentDay = string;
 	}
 
 
